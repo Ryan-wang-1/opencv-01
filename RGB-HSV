@@ -1,0 +1,24 @@
+#include "opencv2/opencv.hpp"
+using namespace cv;
+int main(void)
+{
+	char *fn = "D:\\opencv\\sources\\samples\\data\\lena.jpg";
+	Mat image = imread(fn);
+	Mat rgb, rgbChannels[3];
+	Mat hsv, hsvChannels[3];
+	cvtColor(image, rgb, COLOR_BGR2RGB);
+	split(rgb, rgbChannels);
+	imshow("source image", image);
+	imshow("R", rgbChannels[0]);
+	imshow("G", rgbChannels[1]);
+	imshow("B", rgbChannels[2]);
+	waitKey(0);
+	cvtColor(image, hsv, COLOR_BGR2HSV);
+	split(hsv, hsvChannels);
+	imshow("Hue", hsvChannels[0]);
+	imshow("Saturation", hsvChannels[1]);
+	imshow("Value", hsvChannels[2]);
+
+	waitKey(0);
+
+}
